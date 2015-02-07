@@ -76,6 +76,12 @@
 
         <div class="table table-bordered">
             <table id="allocateMedicine">
+               
+                <tr>
+                    <td class="col-sm-5">Medicien Name</td>
+                    <td class="col-sm-5">Medicien Quantity</td>
+                </tr>
+                
             </table>
         </div>
         <div class="form-group">
@@ -116,6 +122,11 @@
                     });
                 });
 
+                $('#allMedicine').hide();
+                $('#allQuantity').hide();
+                $('#allDistritsId').hide();
+                $('#allUpazelaId').hide();
+                $('#allServiceCenterId').hide();
                 $("#Upazilas").change(function() {
                     var optionSelected = $(this).find("option:selected");
                     var mydata = { upazilaId: optionSelected.val() };
