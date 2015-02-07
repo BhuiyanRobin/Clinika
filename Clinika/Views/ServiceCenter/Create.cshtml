@@ -1,0 +1,107 @@
+﻿@model CliniKa.Models.DatabaseObject.ServiceCenter
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ServiceCenter</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code)
+                @Html.ValidationMessageFor(model => model.Code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DistrictId, "DistrictId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DistrictId", String.Empty)
+                @Html.ValidationMessageFor(model => model.DistrictId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                <label for="UpazilaId" id="upazilaLabel"> Upazila</label>
+                @Html.DropDownList("UpazilaId", String.Empty)
+                @Html.ValidationMessageFor(model => model.UpazilaId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            
+            $("#upazilaLabel").hide();
+            $("#UpazilaId").hide();
+            
+            $("#DistrictId").change(function () {
+                $("#upazilaLabel").show();
+                $("#UpazilaId").show();
+                var optionSelected = $(this).find("option:selected");
+                var mydata = { DistrictId: optionSelected.val() };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("FindThisDistrict", "ServiceCenter")',
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(mydata),
+                    dataType: "json",
+                    success: function(data) {
+                        $('#UpazilaId').empty();
+                        $.each(data, function(index, value) {
+                            $('#UpazilaId').append($('<option/>', {
+                                value: value.Id,
+                                text: value.Name
+                            }));
+                        });
+                    },
+
+                });
+
+            });
+            
+            });
+    </script>
+}

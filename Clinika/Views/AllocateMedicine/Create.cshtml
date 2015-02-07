@@ -1,0 +1,227 @@
+﻿@model Clinika.Models.DatabaseObject.AllocateMedicine
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AllocateMedicine</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <label class=" control-label col-md-2">District</label>
+            <div class="col-md-10">
+                @Html.DropDownList("Districts", String.Empty)
+                @Html.ValidationMessageFor(model => model.Districts)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class=" control-label col-md-2">Upazila</label>
+            <div class="col-md-10">
+                <select id="Upazilas">
+                    <option></option>
+                    <option></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class=" control-label col-md-2">Service Center Name</label>
+            <div class="col-md-10">
+                <div class="col-md-10">
+                    <select id="ServiceCenterId">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class=" control-label col-md-2">Medicine Name</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MedicineId", String.Empty)
+                @Html.ValidationMessageFor(model => model.MedicineId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity)
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" id="Add" class="btn btn-default" />
+            </div>
+        </div>
+
+        <input type="text" id="allMedicine" name="allMedicine" value="" />
+        <input type="text" id="allQuantity" name="allQuantity" value="" />
+        <input type="text" id="allDistritsId" name="allDistritsId" value="" />
+        <input type="text" id="allUpazelaId" name="allUpazelaId" value="" />
+        <input type="text" id="allServiceCenterId" name="allServiceCenterId" value="" />
+
+
+        <div class="table table-bordered">
+            <table id="allocateMedicine">
+            </table>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" id="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+    @section Scripts {
+
+        <script>
+            $(document).ready(function() {
+
+                $('#Districts').change(function() {
+                    var optionSelected = $(this).find("option:selected");
+                    var mydata = { districtId: optionSelected.val() };
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("FindThisDistrict", "AllocateMedicine")',
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify(mydata),
+                        dataType: "json",
+                        success: function(data) {
+                            $('#Upazilas').empty().append('<option  value="">Select Upazila Center</option>');
+                            $.each(data, function(index, value) {
+                                $('#Upazilas').append($('<option/>', {
+                                    value: value.Id,
+                                    text: value.Name
+                                }));
+                            });
+                        },
+                    });
+                });
+
+                $("#Upazilas").change(function() {
+                    var optionSelected = $(this).find("option:selected");
+                    var mydata = { upazilaId: optionSelected.val() };
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("FindServiceCenter", "AllocateMedicine")',
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify(mydata),
+                        dataType: "json",
+                        success: function(data) {
+                            $('#ServiceCenterId').empty().append('<option  value="">Select Service Center</option>');
+                            $.each(data, function(index, value) {
+                                $('#ServiceCenterId').append($('<option/>', {
+                                    value: value.ServiceCenterId,
+                                    text: value.Name
+                                }));
+                            });
+                        },
+                    });
+                });
+                    
+                    $("#Add").click(function () {
+                      
+                       
+                    var upazilaId = $("#Upazilas").val();
+                    var districtId = $("#Districts").val();
+                    var serviceCenterId = $("#ServiceCenterId").val();
+                    var medicineId = $("#MedicineId").val();
+                    var quantity = $("#Quantity").val();
+                    var medicineName = $("#MedicineId option:selected").text();
+                        
+                    $('#allocateMedicine').append("<tr><td> " + medicineName + "</td><td>" + quantity + "</td></tr>");
+
+                    var allMedicine = $('#allMedicine').val();
+                    var allQuantity = $('#allQuantity').val();
+                    var allDistritsId = $('#allDistritsId').val();
+                    var allUpazelaId = $('#allUpazelaId').val();
+                    var allServiceCenterId = $('#allServiceCenterId').val();
+
+                    if ($('#allMedicine').val().length != 0) {
+                        allMedicine += "/" + medicineId;
+                    } else {
+                        allMedicine = medicineId;
+                    }
+                    $('#allMedicine').val(allMedicine);
+
+                    if ($('#allDistritsId').val().length != 0) {
+                        allDistritsId += "/" + districtId;
+                    } else {
+                        allDistritsId = districtId;
+                    }
+                    $('#allDistritsId').val(allDistritsId);
+
+                    if ($('#allUpazelaId').val().length != 0) {
+                        allUpazelaId += "/" + upazilaId;
+                    } else {
+                        allUpazelaId = upazilaId;
+                    }
+                    $('#allUpazelaId').val(allUpazelaId);
+
+
+                    if ($('#allQuantity').val().length != 0) {
+                        allQuantity += "/" + quantity;
+                    } else {
+                        allQuantity = quantity;
+                    }
+                    $('#allQuantity').val(allQuantity);
+
+                    if ($('#allServiceCenterId').val().length != 0) {
+                        allServiceCenterId += "/" + serviceCenterId;
+                    } else {
+                        allServiceCenterId = serviceCenterId;
+                    }
+                    $('#allServiceCenterId').val(allServiceCenterId);
+                   
+                    return false;
+
+                });
+                $("#Create").click(function() {
+                    var upazilaId = $("#allUpazelaId").val();
+                    var districtId = $("#allDistritsId").val();
+                    var serviceCenterId = $("#allServiceCenterId").val();
+                    var medicineId = $("#allMedicine").val();
+                    var quantity = $("#allQuantity").val();
+                    alert(upazilaId + " " + districtId + " " + serviceCenterId + " " + medicineId + " " + quantity);
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Allocate", "AllocateMedicine")',
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({ upazilaId: upazilaId, districtId: districtId, serviceCenterId: serviceCenterId, medicineId: medicineId, quantity: quantity }),
+                        success: function(data) {
+                        },
+                    });
+                    //$.post("Allocate", { upazilaId: upazilaId, districtId: districtId, serviceCenterId: serviceCenterId, medicineId: medicineId, quantity: quantity }, function (data) {
+                    //    console.log(data);
+
+                    //}, "json");
+
+                    return false;
+                }
+                );
+
+            }
+            );
+        </script>
+    }
+
+
