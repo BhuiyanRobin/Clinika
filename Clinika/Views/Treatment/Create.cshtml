@@ -7,11 +7,10 @@
 
 <h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Treatment</h4>
         <hr />
@@ -19,9 +18,15 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.VoterId, new { @class = "control-label col-md-2" })
+
             <div class="col-md-10">
                 @Html.EditorFor(model => model.VoterId)
                 @Html.ValidationMessageFor(model => model.VoterId)
+            </div>
+
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-default" id="show">Show Details</button>
+
             </div>
         </div>
 
@@ -82,10 +87,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DiseaseId, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DiseasesId, "DiseasesId", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DiseaseId)
-                @Html.ValidationMessageFor(model => model.DiseaseId)
+                @Html.DropDownList("DiseasesId", String.Empty)
+                @Html.ValidationMessageFor(model => model.DiseasesId)
             </div>
         </div>
 
@@ -128,6 +133,7 @@
                 @Html.ValidationMessageFor(model => model.Note)
             </div>
         </div>
+        <table id="s"></table>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -140,7 +146,97 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+
+            $("#Message").hide();
+            $("#warning").hide();
+            $("#show").click(function () {
+
+
+                var nm;
+                $.ajax({
+                    type: "POST",
+                    url: "http://nerdcastlebd.com/web_service/voterdb/index.php/voters/voter/5644309456813",
+                    dataType: "xml",
+                    success: function (xml) {
+
+                        var xmlDoc = $.parseXML(xml);
+
+                        $(xmlDoc).find('voter').each(function () {
+                            nm = $(this).find('name').text();
+                            alert(nm);
+                        });
+                    }
+                });
+                //$.get("http://nerdcastlebd.com/web_service/voterdb/index.php/voters/voter/5644309456813", function(d) {
+                //    $('body').append('<h1> Recommended Web Development Books </h1>');
+                //    $('body').append('<dl />');
+
+                //    $(d).find('voter').each(function() {
+
+                //        var $voter = $(this);
+                //        var name = $voter.attr("name").text();
+                //        var id = $voter.find('id').text();
+                //        var address = $voter.attr('address').text();
+
+                //        var html = '<dt> <img class="bookImage" alt="" src="' + address + '" /> </dt>';
+                //        html += '<dd> <span class="loadingPic" alt="Loading" />';
+                //        html += '<p class="title">' + name + '</p>';
+                //        html += '<p> ' + id + '</p>';
+                //        html += '</dd>';
+
+                //        $('dl').append($(html));
+
+                //        $('.loadingPic').fadeOut(1400);
+                //    });
+                //});
+
+            });
+
+
+            //$("#show").click(function() {
+            //    alert("bhuiyan");
+
+            //    $.ajax({
+            //        type: "get",
+            //        url: "http://nerdcastlebd.com/web_service/voterdb/index.php/voters/voter/5644309456813",
+            //        dataType: "xml",
+            //        success: function(data) {
+            //            $(data).find('voter').each(function () {
+            //                alert("bhuiyan");
+            //            });
+
+            //        }
+            //    });
+            //});
+        });
+    </script>
+    @*//$.ajax({
+        //    type: "GET",
+        //    url: "http://nerdcastlebd.com/web_service/voterdb/index.php/voters/voter/5644309456813",
+        //    datatype: "xml",
+        //    success: function (xml) {
+        //        alert("xml");
+        //        $(xml).find('voter').each(function () {
+        //            $(this).find("id").each(function () {
+        //                var name = $(this).text();
+        //                alert(name);
+        //            });
+        //        });
+        //    }
+        //});
+        //return false;
+        //    });
+        //});
+
+        //function xmlParser(xml) {
+        //    $('#voter').fadeOut();
+        //    $(xml).find("voter").each(function() {
+        //        $("#Name").append($(this).find("name").text());
+        //        $(".voter").fadeIn(1000);
+        //        });
+        //}*@
+
 }

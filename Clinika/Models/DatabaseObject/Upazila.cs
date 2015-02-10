@@ -7,7 +7,7 @@ namespace CliniKa.Models.DatabaseObject
     {
         public int Id { set; get; }
         public string Name { set; get; }
-        public int Population { set; get; }
+        
         public virtual ICollection<ServiceCenter> ServiceCenters { set; get; }
 
     }

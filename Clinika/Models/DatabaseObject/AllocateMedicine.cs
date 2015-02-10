@@ -15,8 +15,12 @@ namespace Clinika.Models.DatabaseObject
     {
         public int Id { set; get; }
         public int ServiceCenterId { set; get; }
+
+        [Required(ErrorMessage = "Please insert quantity")]
         public double Quantity { set; get; }
+        [Required(ErrorMessage = "Please select a medicine")]
         public int MedicineId { set; get; }
+        
         public int DistrictUpazilaId { set; get; }
         public virtual ServiceCenter AServiceCenter { set; get; }
         public virtual Medicine AMedicine { set; get; }

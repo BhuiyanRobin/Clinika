@@ -61,19 +61,19 @@ intellisense.annotate(jQuery, {
   },
   'cssHooks': function() {
     /// <summary>Hook directly into jQuery to override how particular CSS properties are retrieved or set, normalize CSS property naming, or create custom properties.</summary>
-    /// <returns type="Object" />
+    /// <returns type="Collection0" />
   },
   'data': function() {
     /// <signature>
     ///   <summary>Returns value at named data store for the element, as set by jQuery.data(element, name, value), or the full data store for the element.</summary>
     ///   <param name="element" type="Element">The DOM element to query for the data.</param>
     ///   <param name="key" type="String">Name of the data stored.</param>
-    ///   <returns type="Object" />
+    ///   <returns type="Collection0" />
     /// </signature>
     /// <signature>
     ///   <summary>Returns value at named data store for the element, as set by jQuery.data(element, name, value), or the full data store for the element.</summary>
     ///   <param name="element" type="Element">The DOM element to query for the data.</param>
-    ///   <returns type="Object" />
+    ///   <returns type="Collection0" />
     /// </signature>
   },
   'Deferred': function() {
@@ -93,9 +93,9 @@ intellisense.annotate(jQuery, {
   'each': function() {
     /// <signature>
     ///   <summary>A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function's arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.</summary>
-    ///   <param name="collection" type="Object">The object or array to iterate over.</param>
+    ///   <param name="collection" type="Collection0">The object or array to iterate over.</param>
     ///   <param name="callback(indexInArray, valueOfElement)" type="Function">The function that will be executed on every object.</param>
-    ///   <returns type="Object" />
+    ///   <returns type="Collection0" />
     /// </signature>
   },
   'error': function() {
@@ -107,25 +107,25 @@ intellisense.annotate(jQuery, {
   'extend': function() {
     /// <signature>
     ///   <summary>Merge the contents of two or more objects together into the first object.</summary>
-    ///   <param name="target" type="Object">An object that will receive the new properties if additional objects are passed in or that will extend the jQuery namespace if it is the sole argument.</param>
-    ///   <param name="object1" type="Object">An object containing additional properties to merge in.</param>
-    ///   <param name="objectN" type="Object">Additional objects containing properties to merge in.</param>
-    ///   <returns type="Object" />
+    ///   <param name="target" type="Collection0">An object that will receive the new properties if additional objects are passed in or that will extend the jQuery namespace if it is the sole argument.</param>
+    ///   <param name="object1" type="Collection0">An object containing additional properties to merge in.</param>
+    ///   <param name="objectN" type="Collection0">Additional objects containing properties to merge in.</param>
+    ///   <returns type="Collection0" />
     /// </signature>
     /// <signature>
     ///   <summary>Merge the contents of two or more objects together into the first object.</summary>
     ///   <param name="deep" type="Boolean">If true, the merge becomes recursive (aka. deep copy).</param>
-    ///   <param name="target" type="Object">The object to extend. It will receive the new properties.</param>
-    ///   <param name="object1" type="Object">An object containing additional properties to merge in.</param>
-    ///   <param name="objectN" type="Object">Additional objects containing properties to merge in.</param>
-    ///   <returns type="Object" />
+    ///   <param name="target" type="Collection0">The object to extend. It will receive the new properties.</param>
+    ///   <param name="object1" type="Collection0">An object containing additional properties to merge in.</param>
+    ///   <param name="objectN" type="Collection0">Additional objects containing properties to merge in.</param>
+    ///   <returns type="Collection0" />
     /// </signature>
   },
   'fn.extend': function() {
     /// <signature>
     ///   <summary>Merge the contents of an object onto the jQuery prototype to provide new jQuery instance methods.</summary>
-    ///   <param name="object" type="Object">An object to merge onto the jQuery prototype.</param>
-    ///   <returns type="Object" />
+    ///   <param name="object" type="Collection0">An object to merge onto the jQuery prototype.</param>
+    ///   <returns type="Collection0" />
     /// </signature>
   },
   'get': function() {
@@ -195,21 +195,21 @@ intellisense.annotate(jQuery, {
   'isArray': function() {
     /// <signature>
     ///   <summary>Determine whether the argument is an array.</summary>
-    ///   <param name="obj" type="Object">Object to test whether or not it is an array.</param>
+    ///   <param name="obj" type="Collection0">Collection0 to test whether or not it is an array.</param>
     ///   <returns type="Boolean" />
     /// </signature>
   },
   'isEmptyObject': function() {
     /// <signature>
     ///   <summary>Check to see if an object is empty (contains no enumerable properties).</summary>
-    ///   <param name="object" type="Object">The object that will be checked to see if it's empty.</param>
+    ///   <param name="object" type="Collection0">The object that will be checked to see if it's empty.</param>
     ///   <returns type="Boolean" />
     /// </signature>
   },
   'isFunction': function() {
     /// <signature>
     ///   <summary>Determine if the argument passed is a Javascript function object.</summary>
-    ///   <param name="obj" type="PlainObject">Object to test whether or not it is a function.</param>
+    ///   <param name="obj" type="PlainObject">Collection0 to test whether or not it is a function.</param>
     ///   <returns type="Boolean" />
     /// </signature>
   },
@@ -222,7 +222,7 @@ intellisense.annotate(jQuery, {
   },
   'isPlainObject': function() {
     /// <signature>
-    ///   <summary>Check to see if an object is a plain object (created using "{}" or "new Object").</summary>
+    ///   <summary>Check to see if an object is a plain object (created using "{}" or "new Collection0").</summary>
     ///   <param name="object" type="PlainObject">The object that will be checked to see if it's a plain object.</param>
     ///   <returns type="Boolean" />
     /// </signature>
@@ -230,7 +230,7 @@ intellisense.annotate(jQuery, {
   'isWindow': function() {
     /// <signature>
     ///   <summary>Determine whether the argument is a window.</summary>
-    ///   <param name="obj" type="PlainObject">Object to test whether or not it is a window.</param>
+    ///   <param name="obj" type="PlainObject">Collection0 to test whether or not it is a window.</param>
     ///   <returns type="Boolean" />
     /// </signature>
   },
@@ -257,7 +257,7 @@ intellisense.annotate(jQuery, {
     /// </signature>
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
-    ///   <param name="arrayOrObject" type="">The Array or Object to translate.</param>
+    ///   <param name="arrayOrObject" type="">The Array or Collection0 to translate.</param>
     ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
@@ -274,7 +274,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Relinquish jQuery's control of the $ variable.</summary>
     ///   <param name="removeAll" type="Boolean">A Boolean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).</param>
-    ///   <returns type="Object" />
+    ///   <returns type="Collection0" />
     /// </signature>
   },
   'noop': function() {
@@ -310,7 +310,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Takes a well-formed JSON string and returns the resulting JavaScript object.</summary>
     ///   <param name="json" type="String">The JSON string to parse.</param>
-    ///   <returns type="Object" />
+    ///   <returns type="Collection0" />
     /// </signature>
   },
   'parseXML': function() {
@@ -388,7 +388,7 @@ intellisense.annotate(jQuery, {
   },
   'support': function() {
     /// <summary>A collection of properties that represent the presence of different browser features or bugs. Primarily intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</summary>
-    /// <returns type="Object" />
+    /// <returns type="Collection0" />
   },
   'trim': function() {
     /// <signature>
@@ -400,7 +400,7 @@ intellisense.annotate(jQuery, {
   'type': function() {
     /// <signature>
     ///   <summary>Determine the internal JavaScript [[Class]] of an object.</summary>
-    ///   <param name="obj" type="PlainObject">Object to get the internal JavaScript [[Class]] of.</param>
+    ///   <param name="obj" type="PlainObject">Collection0 to get the internal JavaScript [[Class]] of.</param>
     ///   <returns type="String" />
     /// </signature>
   },
@@ -529,15 +529,15 @@ intellisense.annotate(_object, {
   'notify': function() {
     /// <signature>
     ///   <summary>Call the progressCallbacks on a Deferred object with the given args.</summary>
-    ///   <param name="args" type="Object">Optional arguments that are passed to the progressCallbacks.</param>
+    ///   <param name="args" type="Collection0">Optional arguments that are passed to the progressCallbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'notifyWith': function() {
     /// <signature>
     ///   <summary>Call the progressCallbacks on a Deferred object with the given context and args.</summary>
-    ///   <param name="context" type="Object">Context passed to the progressCallbacks as the this object.</param>
-    ///   <param name="args" type="Object">Optional arguments that are passed to the progressCallbacks.</param>
+    ///   <param name="context" type="Collection0">Context passed to the progressCallbacks as the this object.</param>
+    ///   <param name="args" type="Collection0">Optional arguments that are passed to the progressCallbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
@@ -566,7 +566,7 @@ intellisense.annotate(_object, {
   'promise': function() {
     /// <signature>
     ///   <summary>Return a Deferred's Promise object.</summary>
-    ///   <param name="target" type="Object">Object onto which the promise methods have to be attached</param>
+    ///   <param name="target" type="Collection0">Collection0 onto which the promise methods have to be attached</param>
     ///   <returns type="Promise" />
     /// </signature>
   },
@@ -580,7 +580,7 @@ intellisense.annotate(_object, {
   'rejectWith': function() {
     /// <signature>
     ///   <summary>Reject a Deferred object and call any failCallbacks with the given context and args.</summary>
-    ///   <param name="context" type="Object">Context passed to the failCallbacks as the this object.</param>
+    ///   <param name="context" type="Collection0">Context passed to the failCallbacks as the this object.</param>
     ///   <param name="args" type="Array">An optional array of arguments that are passed to the failCallbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
@@ -595,7 +595,7 @@ intellisense.annotate(_object, {
   'resolveWith': function() {
     /// <signature>
     ///   <summary>Resolve a Deferred object and call any doneCallbacks with the given context and args.</summary>
-    ///   <param name="context" type="Object">Context passed to the doneCallbacks as the this object.</param>
+    ///   <param name="context" type="Collection0">Context passed to the doneCallbacks as the this object.</param>
     ///   <param name="args" type="Array">An optional array of arguments that are passed to the doneCallbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
@@ -639,7 +639,7 @@ intellisense.annotate(jQuery.Event.prototype, {
   },
   'data': function() {
     /// <summary>An optional object of data passed to an event method when the current executing handler is bound.</summary>
-    /// <returns type="Object" />
+    /// <returns type="Collection0" />
   },
   'delegateTarget': function() {
     /// <summary>The element where the currently-called jQuery event handler was attached.</summary>
@@ -682,7 +682,7 @@ intellisense.annotate(jQuery.Event.prototype, {
   },
   'result': function() {
     /// <summary>The last value returned by an event handler that was triggered by this event, unless the value was undefined.</summary>
-    /// <returns type="Object" />
+    /// <returns type="Collection0" />
   },
   'stopImmediatePropagation': function() {
     /// <summary>Keeps the rest of the handlers from being executed and prevents the event from bubbling up the DOM tree.</summary>
@@ -956,20 +956,20 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Attach a handler to an event for the elements.</summary>
     ///   <param name="eventType" type="String">A string containing one or more DOM event types, such as "click" or "submit," or custom event names.</param>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Attach a handler to an event for the elements.</summary>
     ///   <param name="eventType" type="String">A string containing one or more DOM event types, such as "click" or "submit," or custom event names.</param>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="preventBubble" type="Boolean">Setting the third argument to false will attach a function that prevents the default action from occurring and stops the event from bubbling. The default is true.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Attach a handler to an event for the elements.</summary>
-    ///   <param name="events" type="Object">An object containing one or more DOM event types and functions to execute for them.</param>
+    ///   <param name="events" type="Collection0">An object containing one or more DOM event types and functions to execute for them.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -981,7 +981,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "blur" JavaScript event, or trigger that event on an element.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -997,7 +997,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "change" JavaScript event, or trigger that event on an element.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1043,7 +1043,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "click" JavaScript event, or trigger that event on an element.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1121,12 +1121,12 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Store arbitrary data associated with the matched elements.</summary>
     ///   <param name="key" type="String">A string naming the piece of data to set.</param>
-    ///   <param name="value" type="Object">The new data value; it can be any Javascript type including Array or Object.</param>
+    ///   <param name="value" type="Collection0">The new data value; it can be any Javascript type including Array or Collection0.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Store arbitrary data associated with the matched elements.</summary>
-    ///   <param name="obj" type="Object">An object of key-value pairs of data to update.</param>
+    ///   <param name="obj" type="Collection0">An object of key-value pairs of data to update.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1138,7 +1138,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "dblclick" JavaScript event, or trigger that event on an element.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1163,7 +1163,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Attach a handler to one or more events for all elements that match the selector, now or in the future, based on a specific set of root elements.</summary>
     ///   <param name="selector" type="String">A selector to filter the elements that trigger the event.</param>
     ///   <param name="eventType" type="String">A string containing one or more space-separated JavaScript event types, such as "click" or "keydown," or custom event names.</param>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute at the time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1252,7 +1252,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "error" JavaScript event.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1352,7 +1352,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Reduce the set of matched elements to those that match the selector or pass the function's test.</summary>
-    ///   <param name="jQuery object" type="Object">An existing jQuery object to match the current set of elements against.</param>
+    ///   <param name="jQuery object" type="Collection0">An existing jQuery object to match the current set of elements against.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1364,7 +1364,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.</summary>
-    ///   <param name="jQuery object" type="Object">A jQuery object to match elements against.</param>
+    ///   <param name="jQuery object" type="Collection0">A jQuery object to match elements against.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1397,7 +1397,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "focus" JavaScript event, or trigger that event on an element.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1410,7 +1410,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "focusin" event.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1423,7 +1423,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "focusout" JavaScript event.</summary>
-    ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">An object containing data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1609,7 +1609,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
-    ///   <param name="jQuery object" type="Object">An existing jQuery object to match the current set of elements against.</param>
+    ///   <param name="jQuery object" type="Collection0">An existing jQuery object to match the current set of elements against.</param>
     ///   <returns type="Boolean" />
     /// </signature>
     /// <signature>
@@ -2045,7 +2045,7 @@ intellisense.annotate(jQuery.fn, {
   },
   'position': function() {
     /// <summary>Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.</summary>
-    /// <returns type="Object" />
+    /// <returns type="Collection0" />
   },
   'prepend': function() {
     /// <signature>
@@ -2099,7 +2099,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished.</summary>
     ///   <param name="type" type="String">The type of queue that needs to be observed.</param>
-    ///   <param name="target" type="PlainObject">Object onto which the promise methods have to be attached</param>
+    ///   <param name="target" type="PlainObject">Collection0 onto which the promise methods have to be attached</param>
     ///   <returns type="Promise" />
     /// </signature>
   },
@@ -2512,7 +2512,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Execute all handlers attached to an element for an event.</summary>
     ///   <param name="eventType" type="String">A string containing a JavaScript event type, such as click or submit.</param>
     ///   <param name="extraParameters" type="Array">An array of additional parameters to pass along to the event handler.</param>
-    ///   <returns type="Object" />
+    ///   <returns type="Collection0" />
     /// </signature>
   },
   'unbind': function() {
@@ -2530,7 +2530,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Remove a previously-attached event handler from the elements.</summary>
-    ///   <param name="event" type="Object">A JavaScript event object as passed to an event handler.</param>
+    ///   <param name="event" type="Collection0">A JavaScript event object as passed to an event handler.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2568,7 +2568,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Bind an event handler to the "unload" JavaScript event.</summary>
-    ///   <param name="eventData" type="Object">A plain object of data that will be passed to the event handler.</param>
+    ///   <param name="eventData" type="Collection0">A plain object of data that will be passed to the event handler.</param>
     ///   <param name="handler(eventObject)" type="Function">A function to execute each time the event is triggered.</param>
     ///   <returns type="jQuery" />
     /// </signature>

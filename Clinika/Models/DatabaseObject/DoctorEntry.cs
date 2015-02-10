@@ -24,7 +24,7 @@ namespace Clinika.Models.DatabaseObject
         //[StringLength(100, ErrorMessage = "Doctor Specialization max length is 100")]
         [DisplayName("Specialization")]
         public string Specialization { get; set; }
-        public virtual ICollection<Treatment> Treatments { set; get; }
+       // public virtual ICollection<Treatment> Treatments { set; get; }
     }
 
 }

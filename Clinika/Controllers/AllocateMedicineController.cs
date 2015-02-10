@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Clinika.Models.DatabaseObject;
 using Clinika.Models.Gateway;
+using Clinika.Models.Relations;
+using Microsoft.Ajax.Utilities;
 
 namespace Clinika.Controllers
 {
@@ -51,18 +53,12 @@ namespace Clinika.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ServiceCenterId,Quantity,MedicineId,DistrictUpazilaId")] AllocateMedicine allocatemedicine)
+        public ActionResult Create(
+            [Bind(Include = "Id,ServiceCenterId,Quantity,MedicineId,DistrictUpazilaId")] AllocateMedicine
+                allocatemedicine)
         {
-            if (ModelState.IsValid)
-            {
-                db.AllocateMedicines.Add(allocatemedicine);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.MedicineId = new SelectList(db.Medicines, "MedicineId", "Name", allocatemedicine.MedicineId);
-            ViewBag.ServiceCenterId = new SelectList(db.ServiceCenters, "Id", "Name", allocatemedicine.ServiceCenterId);
-            return View(allocatemedicine);
+            return RedirectToAction("Create");
         }
 
         // GET: /AllocateMedicine/Edit/5
@@ -87,7 +83,9 @@ namespace Clinika.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ServiceCenterId,Quantity,MedicineId,DistrictUpazilaId")] AllocateMedicine allocatemedicine)
+        public ActionResult Edit(
+            [Bind(Include = "Id,ServiceCenterId,Quantity,MedicineId,DistrictUpazilaId")] AllocateMedicine
+                allocatemedicine)
         {
             if (ModelState.IsValid)
             {
@@ -141,12 +139,13 @@ namespace Clinika.Controllers
 
             var relations = aCenterGateway.DistrictUpazilaRelation.Where(x => x.DistrictId == districtId).ToList();
 
-            var upazilas = (aCenterGateway.DistrictUpazilaRelation.Join(aCenterGateway.Upazilas, p => p.Id, prd => prd.Id,
-                (p, prd) => new { p, prd }).Where(@t => @t.p.DistrictId == districtId).Select(@t => new
-                {
-                    @t.prd.Id,
-                    @t.prd.Name
-                })).ToList();
+            var upazilas =
+                (aCenterGateway.DistrictUpazilaRelation.Join(aCenterGateway.Upazilas, p => p.Id, prd => prd.Id,
+                    (p, prd) => new { p, prd }).Where(@t => @t.p.DistrictId == districtId).Select(@t => new
+                    {
+                        @t.prd.Id,
+                        @t.prd.Name
+                    })).ToList();
             return Json(upazilas, JsonRequestBehavior.AllowGet);
         }
 
@@ -164,22 +163,17 @@ namespace Clinika.Controllers
             return Json(serviceCenters, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Allocate(string upazilaId, string districtId, string serviceCenterId, string medicineId, string quantity)
+
+
+        public ActionResult Chk(Collection0[] message)
         {
-            //, int districtId, int serviceCenterId, int medicineId
-            
-            char[] upazilas = CharCollection(upazilaId);
-            char[] districts = CharCollection(districtId);
-            char[] serviceCentes = CharCollection(serviceCenterId);
-            char[] medicines = CharCollection(medicineId);
-            char[] quantitys = CharCollection(quantity);
-            string message = "";
-            for (int i = 0; i < districts.Length; i++)
+            foreach (Collection0 aCollection0 in message)
             {
                 AllocateMedicine allocateMedicine = new AllocateMedicine();
-                int district = Convert.ToInt16(districts[i]);
-                int upazila = Convert.ToInt16(upazilas[i]);
-                var relations = db.DistrictUpazilaRelation.FirstOrDefault(p => p.UpazilaId == upazila && p.DistrictId == district);
+                int district = aCollection0.DistrictId;
+                int upazila = aCollection0.UpazilaId;
+                var relations =
+                    db.DistrictUpazilaRelation.FirstOrDefault(p => p.UpazilaId == upazila && p.DistrictId == district);
 
                 if (relations.Id == 0)
                 {
@@ -187,28 +181,17 @@ namespace Clinika.Controllers
                 }
                 else
                 {
-                    allocateMedicine.MedicineId = Convert.ToInt16(medicines[i]);
+                    allocateMedicine.MedicineId = Convert.ToInt16(aCollection0.MedicineId);
                     allocateMedicine.DistrictUpazilaId = relations.Id;
-                    allocateMedicine.ServiceCenterId = Convert.ToInt16(serviceCentes[i]); ;
-                    allocateMedicine.Quantity = Convert.ToInt16(quantitys[i]); ;
+                    allocateMedicine.ServiceCenterId = Convert.ToInt16(aCollection0.ServiceCenterId);
+                    ;
+                    allocateMedicine.Quantity = Convert.ToInt16(aCollection0.Quantity);
                     db.AllocateMedicines.Add(allocateMedicine);
-                    message = "Saved";
                     db.SaveChanges();
                 }
+
             }
-
-
             return Json(message, JsonRequestBehavior.AllowGet);
-        }
-
-        public char[] CharCollection(string collection)
-        {
-            char[] separateValue = new char[collection.Length];
-            for (int j = 0; j < collection.Length; j++)
-            {
-                separateValue[j] = collection[j];
-            }
-            return separateValue;
         }
     }
 }

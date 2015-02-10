@@ -31,13 +31,13 @@ namespace Clinika.Models.DatabaseObject
 
         [DisplayName("Doctor")]
         public int DoctorId { get; set; }
-        public int DiseaseId { get; set; }
+        public int DiseasesId { get; set; }
         public int MedicineId { get; set; }
         public int DoseId { get; set; }
         public int MealId { set; get; }
 
         [DisplayName("Quantity Given")]
-        public string QuantityGiven { get; set; }
+        public int QuantityGiven { get; set; }
 
         [DisplayName("Note")]
         public string Note { get; set; }

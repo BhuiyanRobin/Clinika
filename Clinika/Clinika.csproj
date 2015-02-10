@@ -126,11 +126,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AllocateMedicineController.cs" />
-    <Compile Include="Controllers\DiseasesController.cs" />
+    <Compile Include="Controllers\DiseaseController.cs" />
+    <Compile Include="Controllers\DiseasesReportGenerateController.cs" />
     <Compile Include="Controllers\DoctorEntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MdicineStockReportController.cs" />
     <Compile Include="Controllers\MedicineController.cs" />
-    <Compile Include="Controllers\ServiceCenterController.cs" />
+    <Compile Include="Controllers\ServinceCenterController.cs" />
     <Compile Include="Controllers\TreatmentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,8 +177,25 @@
     <Compile Include="Migrations\201502061732350_a4.Designer.cs">
       <DependentUpon>201502061732350_a4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502072236252_update3.cs" />
+    <Compile Include="Migrations\201502072236252_update3.Designer.cs">
+      <DependentUpon>201502072236252_update3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502092244149_a5.cs" />
+    <Compile Include="Migrations\201502092244149_a5.Designer.cs">
+      <DependentUpon>201502092244149_a5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502092252031_a6.cs" />
+    <Compile Include="Migrations\201502092252031_a6.Designer.cs">
+      <DependentUpon>201502092252031_a6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502101014361_a7.cs" />
+    <Compile Include="Migrations\201502101014361_a7.Designer.cs">
+      <DependentUpon>201502101014361_a7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseObject\AllocateMedicine.cs" />
+    <Compile Include="Models\DatabaseObject\DieaseAffectInfo.cs" />
     <Compile Include="Models\DatabaseObject\Diseases.cs" />
     <Compile Include="Models\DatabaseObject\District.cs" />
     <Compile Include="Models\DatabaseObject\DoctorEntry.cs" />
@@ -188,6 +207,7 @@
     <Compile Include="Models\DatabaseObject\Medicine.cs" />
     <Compile Include="Models\DatabaseObject\ServiceCenter.cs" />
     <Compile Include="Models\DatabaseObject\Upazila.cs" />
+    <Compile Include="Models\Relations\Collection0.cs" />
     <Compile Include="Models\Relations\PatientCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -210,12 +230,23 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.onobtrusive.min.js" />
+    <Content Include="Scripts\jquery-ui.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -230,36 +261,40 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <Content Include="Views\Medicine\Create.cshtml" />
-    <Content Include="Views\Medicine\Delete.cshtml" />
-    <Content Include="Views\Medicine\Details.cshtml" />
-    <Content Include="Views\Medicine\Edit.cshtml" />
-    <Content Include="Views\Medicine\Index.cshtml" />
-    <Content Include="Views\ServiceCenter\Create.cshtml" />
-    <Content Include="Views\ServiceCenter\Delete.cshtml" />
-    <Content Include="Views\ServiceCenter\Details.cshtml" />
-    <Content Include="Views\ServiceCenter\Edit.cshtml" />
-    <Content Include="Views\ServiceCenter\Index.cshtml" />
-    <Content Include="Views\Diseases\Create.cshtml" />
-    <Content Include="Views\Diseases\Delete.cshtml" />
-    <Content Include="Views\Diseases\Details.cshtml" />
-    <Content Include="Views\Diseases\Edit.cshtml" />
-    <Content Include="Views\Diseases\Index.cshtml" />
     <Content Include="Views\DoctorEntry\Create.cshtml" />
     <Content Include="Views\DoctorEntry\Delete.cshtml" />
     <Content Include="Views\DoctorEntry\Details.cshtml" />
     <Content Include="Views\DoctorEntry\Edit.cshtml" />
     <Content Include="Views\DoctorEntry\Index.cshtml" />
-    <Content Include="Views\Treatment\Create.cshtml" />
-    <Content Include="Views\Treatment\Delete.cshtml" />
-    <Content Include="Views\Treatment\Details.cshtml" />
-    <Content Include="Views\Treatment\Edit.cshtml" />
-    <Content Include="Views\Treatment\Index.cshtml" />
     <Content Include="Views\AllocateMedicine\Create.cshtml" />
     <Content Include="Views\AllocateMedicine\Delete.cshtml" />
     <Content Include="Views\AllocateMedicine\Details.cshtml" />
     <Content Include="Views\AllocateMedicine\Edit.cshtml" />
     <Content Include="Views\AllocateMedicine\Index.cshtml" />
+    <Content Include="Views\Medicine\Create.cshtml" />
+    <Content Include="Views\Medicine\Delete.cshtml" />
+    <Content Include="Views\Medicine\Details.cshtml" />
+    <Content Include="Views\Medicine\Edit.cshtml" />
+    <Content Include="Views\Medicine\Index.cshtml" />
+    <Content Include="Views\Disease\Create.cshtml" />
+    <Content Include="Views\Disease\Delete.cshtml" />
+    <Content Include="Views\Disease\Details.cshtml" />
+    <Content Include="Views\Disease\Edit.cshtml" />
+    <Content Include="Views\Disease\Index.cshtml" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
+    <Content Include="Views\ServinceCenter\Create.cshtml" />
+    <Content Include="Views\ServinceCenter\Delete.cshtml" />
+    <Content Include="Views\ServinceCenter\Details.cshtml" />
+    <Content Include="Views\ServinceCenter\Edit.cshtml" />
+    <Content Include="Views\ServinceCenter\Index.cshtml" />
+    <Content Include="Views\DiseasesReportGenerate\Create.cshtml" />
+    <Content Include="Views\ServinceCenter\ShowCreatedServiceCenter.cshtml" />
+    <Content Include="Views\Treatment\Create.cshtml" />
+    <Content Include="Views\Treatment\Delete.cshtml" />
+    <Content Include="Views\Treatment\Details.cshtml" />
+    <Content Include="Views\Treatment\Edit.cshtml" />
+    <Content Include="Views\Treatment\Index.cshtml" />
+    <Content Include="Views\MdicineStockReport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -295,6 +330,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502061732350_a4.resx">
       <DependentUpon>201502061732350_a4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502072236252_update3.resx">
+      <DependentUpon>201502072236252_update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502092244149_a5.resx">
+      <DependentUpon>201502092244149_a5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502092252031_a6.resx">
+      <DependentUpon>201502092252031_a6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502101014361_a7.resx">
+      <DependentUpon>201502101014361_a7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

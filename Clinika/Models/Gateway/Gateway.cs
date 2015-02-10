@@ -21,8 +21,9 @@ namespace Clinika.Models.Gateway
         public DbSet<DoctorEntry> Doctors { set; get; }
         public DbSet<Dose> Doses { set; get; }
         public DbSet<Meal> Meals { set; get; }
-        public DbSet<Treatment> Treatments { get; set; }
         public DbSet<AllocateMedicine> AllocateMedicines { set; get; }
         public DbSet<PatientCount> PatientList { set; get; }
+        public DbSet<Treatment> Treatments { set; get; } 
+        public System.Data.Entity.DbSet<Clinika.Models.DatabaseObject.DieaseAffectInfo> DieaseAffectInfoes { get; set; }
     }
 }

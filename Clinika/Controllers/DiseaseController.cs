@@ -11,18 +11,17 @@ using Clinika.Models.Gateway;
 
 namespace Clinika.Controllers
 {
-    public class DiseasesController : Controller
+    public class DiseaseController : Controller
     {
         private Gateway db = new Gateway();
 
-        // GET: /Diseases/
+        // GET: /Disease/
         public ActionResult Index()
         {
-            var diseaseses = db.Diseaseses.Include(d => d.AMedicine);
-            return View(diseaseses.ToList());
+            return View(db.Diseaseses.ToList());
         }
 
-        // GET: /Diseases/Details/5
+        // GET: /Disease/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,19 +36,18 @@ namespace Clinika.Controllers
             return View(diseases);
         }
 
-        // GET: /Diseases/Create
+        // GET: /Disease/Create
         public ActionResult Create()
         {
-            ViewBag.MedicineId = new SelectList(db.Medicines, "MedicineId", "Name");
             return View();
         }
 
-        // POST: /Diseases/Create
+        // POST: /Disease/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="DiseasesId,Name,Description,TreatmentProcedure,MedicineId")] Diseases diseases)
+        public ActionResult Create([Bind(Include="DiseasesId,Name,Description,TreatmentProcedure,PreferdMedicien")] Diseases diseases)
         {
             if (ModelState.IsValid)
             {
@@ -58,11 +56,10 @@ namespace Clinika.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MedicineId = new SelectList(db.Medicines, "MedicineId", "Name", diseases.MedicineId);
             return View(diseases);
         }
 
-        // GET: /Diseases/Edit/5
+        // GET: /Disease/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,16 +71,15 @@ namespace Clinika.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MedicineId = new SelectList(db.Medicines, "MedicineId", "Name", diseases.MedicineId);
             return View(diseases);
         }
 
-        // POST: /Diseases/Edit/5
+        // POST: /Disease/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="DiseasesId,Name,Description,TreatmentProcedure,MedicineId")] Diseases diseases)
+        public ActionResult Edit([Bind(Include="DiseasesId,Name,Description,TreatmentProcedure,PreferdMedicien")] Diseases diseases)
         {
             if (ModelState.IsValid)
             {
@@ -91,11 +87,10 @@ namespace Clinika.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MedicineId = new SelectList(db.Medicines, "MedicineId", "Name", diseases.MedicineId);
             return View(diseases);
         }
 
-        // GET: /Diseases/Delete/5
+        // GET: /Disease/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +105,7 @@ namespace Clinika.Controllers
             return View(diseases);
         }
 
-        // POST: /Diseases/Delete/5
+        // POST: /Disease/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -128,6 +123,21 @@ namespace Clinika.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult NameExists(string name)
+        {
+            var adisease = db.Diseaseses.FirstOrDefault(x => x.Name == name);
+
+
+            if (adisease != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

@@ -1109,7 +1109,7 @@ window.Modernizr = (function( window, document, undefined ) {
        * Returns the data associated to the given document
        * @private
        * @param {Document} ownerDocument The document.
-       * @returns {Object} An object of data.
+       * @returns {Collection0} An object of data.
        */
       function getExpandoData(ownerDocument) {
         var data = expandoData[ownerDocument[expando]];
@@ -1127,7 +1127,7 @@ window.Modernizr = (function( window, document, undefined ) {
        * @memberOf html5
        * @param {String} nodeName name of the element
        * @param {Document} ownerDocument The context document.
-       * @returns {Object} The shived element.
+       * @returns {Collection0} The shived element.
        */
       function createElement(nodeName, ownerDocument, data){
         if (!ownerDocument) {
@@ -1163,7 +1163,7 @@ window.Modernizr = (function( window, document, undefined ) {
        * returns a shived DocumentFragment for the given document
        * @memberOf html5
        * @param {Document} ownerDocument The context document.
-       * @returns {Object} The shived DocumentFragment.
+       * @returns {Collection0} The shived DocumentFragment.
        */
       function createDocumentFragment(ownerDocument, data){
         if (!ownerDocument) {
@@ -1187,7 +1187,7 @@ window.Modernizr = (function( window, document, undefined ) {
        * Shivs the `createElement` and `createDocumentFragment` methods of the document.
        * @private
        * @param {Document|DocumentFragment} ownerDocument The document.
-       * @param {Object} data of the document.
+       * @param {Collection0} data of the document.
        */
       function shivMethods(ownerDocument, data) {
         if (!data.cache) {
@@ -1252,7 +1252,7 @@ window.Modernizr = (function( window, document, undefined ) {
       /**
        * The `html5` object is exposed so that more elements can be shived and
        * existing shiving can be detected on iframes.
-       * @type Object
+       * @type Collection0
        * @example
        *
        * // options can be changed before the script is included
